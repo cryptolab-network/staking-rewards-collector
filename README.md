@@ -1,6 +1,6 @@
 # Staking Rewards Collector v1.4.6
 
-# Modified by yktseng37
+# Modified by yktseng
 
 I modified the code so that the Staking Rewards Collector is able to send subscan API with an API key to avoid receiving captcha html in the response.
 
