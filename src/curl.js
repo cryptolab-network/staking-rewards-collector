@@ -1,7 +1,7 @@
 import curl from 'curlrequest';
 import { exportVariable } from './fileWorker.js';
 import { dateToString, transformDDMMYYYtoUnix, min } from './utils.js';
-
+import config from '../config/config.js';
 
 export async function addStakingData(obj){
     let found = 0;
@@ -101,11 +101,16 @@ async function getStakingObject(address, page, network){
     } else {
         url = 'https://kusama.api.subscan.io/api/scan/account/reward_slash'
     }
-
+    let headers = {
+        'Content-Type': 'application/json',
+    };
+    if(config.subscanApiKey) {
+        headers['x-api-key'] = config.subscanApiKey;
+    }
     var options = {
         url: url,
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: headers,
         data: JSON.stringify({
         'row':100,
         'page': page,

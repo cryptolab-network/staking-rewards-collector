@@ -1,5 +1,13 @@
 # Staking Rewards Collector v1.4.6
 
+# Modified by yktseng37
+
+I modified the code so that the Staking Rewards Collector is able to send subscan API with an API key to avoid receiving captcha html in the response.
+
+To setup it, rename the `sample.js` to `config.js` in `./config` folder, and fill Subscan API key in the value of `subscanApiKey`.
+
+You can request new Subscab API key from https://docs.api.subscan.io/#introduction.
+
 # Disclaimer
 Everyone using this tool does so at his/her own risk. Neither I nor Web3 Foundation guarantee that any data collected is valid and every user is responsible for double-checking the results of this tool. In addition to potential bugs in this code, you are relying on third-party data: Subscan's API is used to collect staking data and CoinGecko's API is used to collect daily price data.
 
