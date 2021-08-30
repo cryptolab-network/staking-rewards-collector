@@ -15,12 +15,16 @@ export async function addPriceData(obj){
 
     // set index to first day price were available to avoid looking for prices where are none
     let i = _setIndex(obj);
-
+    console.log(prices);
     for(i;i<obj.data.list.length;i++){
-        
-        let tmp = transformDDMMYYYtoUnix(obj.data.list[i].day);               
-        obj.data.list[i].price = round(prices.find(x => x.timestamp == tmp).price,2);
-        obj.data.list[i].volume = total_volume.find(x => x.timestamp == tmp).volume;
+        let tmp = transformDDMMYYYtoUnix(obj.data.list[i].day);     
+        try {      
+            obj.data.list[i].price = round(prices.find(x => x.timestamp == tmp).price,2);
+            obj.data.list[i].volume = total_volume.find(x => x.timestamp == tmp).volume;
+        } catch (err) {
+            obj.data.list[i].price = 0;
+            obj.data.list[i].volume = 0;
+        }
     }
     return obj;
 }
