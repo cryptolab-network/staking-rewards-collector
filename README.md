@@ -1,4 +1,4 @@
-# Staking Rewards Collector v1.4.6
+# Staking Rewards Collector v1.5
 
 # Modified by yktseng
 
@@ -14,8 +14,9 @@ Everyone using this tool does so at his/her own risk. Neither I nor Web3 Foundat
 **This is no tax advice**: Every user is responsible to do his/her own research about how stake rewards are taxable in his/her regulatory framework. 
 
 # Changelog
-## Version 1.4.6
-* Upgraded to new Subscan API standard.
+## Version 1.5
+* Added support to parse Moonriver staking rewards. The goal is long-term to add more and more parachains. 
+* Added new "network" field in userInput.json.
 
 For all changes see the changelog.md
 
@@ -45,9 +46,9 @@ For a more detailed tutorial on how to set up the script, please go [here](https
 The program takes several inputs in the `config/userInput.json` file.
 
 Staking Rewards:
-* **addresses**: A list of objects containing the `address` you want to parse the staking rewards, the `name` of your address and the `startBalance`.
+* **addresses**: A list of objects containing the `address` you want to parse the staking rewards, the `name` of your address and the `startBalance`. It also contains a field `network`, where users can specify their address belonging to `Polkadot`, `Kusama` or `Moonriver`.
 * **startBalance**: The amount of tokens from which the staking rewards are generated at the time of the `start`. Used to calculate the annualizedReturn, can be set to any number if the user is not interested in an accurate annualized return metric. 
-* **start** (YYYY-MM-DD): The earliest day you want to analyze. Note that the earliest available prices for Polkadot are 2020-08-19 and 2019-09-20 for Kusama and that prices are set to 0 before that.
+* **start** (YYYY-MM-DD): The earliest day you want to analyze. Note that the earliest available prices for Polkadot are 2020-08-19, 2019-09-20 for Kusama and 2021-08-26 for Moonriver. Prices are set to 0 before that.
 * **end** (YYYY-MM-DD): The most recent day you want to analyze.
 
 
@@ -96,3 +97,7 @@ A list with objects for every day in your specified range. In the price of numbe
 # Troubleshooting
 * `SyntaxError: Unexpected token < in JSON at position 0`: Sometimes the request to the Subscan API fails, which could cause this issue. Try to run the script again. If the error persists, please file an issue.
 
+# Donations
+This tool is free and stays free to use. But if this tool is useful for you and you feel generous, feel free to donate :)
+* KSM: EdTN2EAPcwsWu3P692Yd3ESR5qcon7BYp3P4NtzmpiVqwpS
+* DOT: 1348r39Md3CRCnETH5GVsEhb87Z2hQr9Avw7q1cPr7XXHMhd 
